@@ -10,7 +10,9 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import Boton_Personalizado.Boton_personalizado;
 import Vista.Material.Panel_Admin_Material_Inicio;
+import Vista.Material.Panel_Admin_Material_Stock;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
 import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
@@ -234,6 +236,14 @@ public class Inicio_Panel_Administrador extends JFrame {
 		Menu_DNI.add(Item_ayuda);
 
 		JMenuItem Item_cerrar = new JMenuItem("Cerrar Perfil");
+		Item_cerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login login=new Login();
+				login.setVisible(true);
+				Inicio_Panel_Administrador.this.setVisible(false);
+				
+			}
+		});
 		Menu_DNI.add(Item_cerrar);
 
 //DesktopPane el cual cambia por internalFrames
@@ -241,10 +251,12 @@ public class Inicio_Panel_Administrador extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(60, 129, 170));
-		panel.setBounds(0, 46, 220, 485);
+		panel.setBounds(0, 44, 220, 485);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		JButton btn_realizarpago=new JButton();
+		Boton_personalizado btn_realizarpago=new Boton_personalizado();
+		btn_realizarpago.setForeground(new Color(0, 0, 0));
+		btn_realizarpago.setBackground(new Color(205, 234, 251));
 		btn_realizarpago.setText("Registrar Pago");
 		btn_realizarpago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -255,10 +267,13 @@ public class Inicio_Panel_Administrador extends JFrame {
 				tipoPago.setModal(true);
 				tipoPago.setUndecorated(true);
 				dispose();
+				contentPane.requestFocus();
 			}
 		});
-		JButton btn_realizarinformes=new JButton();
-		btn_realizarinformes.setText("Realizar informe Economico");
+		Boton_personalizado btn_realizarinformes=new Boton_personalizado();
+		btn_realizarinformes.setForeground(new Color(0, 0, 0));
+		btn_realizarinformes.setBackground(new Color(205, 234, 251));
+		btn_realizarinformes.setText("Informe Economico");
 		btn_realizarinformes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_admin_gestionEconomica_GenerarInforme generarInforme = new Panel_admin_gestionEconomica_GenerarInforme(); 
@@ -270,79 +285,104 @@ public class Inicio_Panel_Administrador extends JFrame {
 				generarInforme.setLocation(0,0);
 				generarInforme.show();
 				generarInforme.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-				
+				contentPane.requestFocus();
 			}
 			
 		});
 		panel.add(btn_realizarinformes);
-		btn_realizarinformes.setBounds(23,289,164,23);
+		btn_realizarinformes.setBounds(25,341,164,23);
 		panel.add(btn_realizarpago);
-		btn_realizarpago.setBounds(23, 255, 164, 23);
+		btn_realizarpago.setBounds(25, 307, 164, 23);
 		// Boton Gestion Medica
 
-		JButton btn_GestionMedica = new JButton("Gestion Medica");
-		btn_GestionMedica.setBounds(23, 153, 164, 23);
+		Boton_personalizado btn_GestionMedica = new Boton_personalizado();
+		btn_GestionMedica.setForeground(new Color(0, 0, 0));
+		btn_GestionMedica.setText("Gestion Medica");
+		btn_GestionMedica.setBackground(new Color(205, 234, 251));
+		btn_GestionMedica.setBounds(25, 205, 164, 23);
 		panel.add(btn_GestionMedica);
-		// Boton Gestion Economica
-		JButton btn_GestionEconomica = new JButton("Gestion Economica");
-		btn_GestionEconomica.setBounds(23, 385, 164, 23);
-		panel.add(btn_GestionEconomica);
+		contentPane.requestFocus();
 
-		JButton btn_proveedor = new JButton("Proveedores");
+		Boton_personalizado btn_proveedor = new Boton_personalizado();
+		btn_proveedor.setForeground(new Color(0, 0, 0));
+		btn_proveedor.setText("Proveedores");
+		btn_proveedor.setBackground(new Color(205, 234, 251));
 		btn_proveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarMenuProveedor(btn_proveedor,miDesktopPane);
-				
+				contentPane.requestFocus();
 			}
 		});
-		btn_proveedor.setBounds(23, 85, 164, 23);
+		btn_proveedor.setBounds(25, 137, 164, 23);
 		panel.add(btn_proveedor);
 
-		JButton btn_paciente = new JButton("Pacientes");
+		Boton_personalizado btn_paciente = new Boton_personalizado();
+		btn_paciente.setForeground(new Color(0, 0, 0));
+		btn_paciente.setText("Pacientes");
+		btn_paciente.setBackground(new Color(205, 234, 251));
 		btn_paciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				mostrarMenuPaciente(btn_paciente, miDesktopPane);
-
+				contentPane.requestFocus();
 			}
 		});
 
-		btn_paciente.setBounds(23, 51, 164, 23);
+		btn_paciente.setBounds(25, 103, 164, 23);
 		panel.add(btn_paciente);
 
-		JButton btn_Doctores = new JButton("Doctores");
+		Boton_personalizado btn_Doctores = new Boton_personalizado();
+		btn_Doctores.setForeground(new Color(0, 0, 0));
+		btn_Doctores.setText("Doctores");
+		btn_Doctores.setBackground(new Color(205, 234, 251));
 		btn_Doctores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				mostrarMenuDoctor(btn_Doctores, miDesktopPane);
+				contentPane.requestFocus();
 			}
 		});
 
-		btn_Doctores.setBounds(23, 119, 164, 23);
+		btn_Doctores.setBounds(25, 171, 164, 23);
 		panel.add(btn_Doctores);
 		
-		JButton btn_pedidos = new JButton("Pedidos");
-		btn_pedidos.setBounds(23, 187, 164, 23);
-		panel.add(btn_pedidos);
-		
-		JButton btn_material = new JButton("Material");
-		btn_material.setBounds(23, 221, 164, 23);
-		panel.add(btn_material);
-
-		btn_GestionEconomica.addActionListener(new ActionListener() {
+		Boton_personalizado btn_pedidos = new Boton_personalizado();
+		btn_pedidos.setForeground(new Color(0, 0, 0));
+		btn_pedidos.setText("Pedidos");
+		btn_pedidos.setBackground(new Color(205, 234, 251));
+		btn_pedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Panel_admin_gestionEconomica gestion_economica = new Panel_admin_gestionEconomica();
-				gestion_economica.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(gestion_economica);
-				gestion_economica.setBorder(null);
-				((BasicInternalFrameUI) gestion_economica.getUI()).setNorthPane(null);
-				gestion_economica.setLocation(0, 0);
-				gestion_economica.show();
-				gestion_economica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
+				contentPane.requestFocus();
+				
+				
+				
 			}
 		});
+		btn_pedidos.setBounds(25, 239, 164, 23);
+		panel.add(btn_pedidos);
+		
+		Boton_personalizado btn_material = new Boton_personalizado();
+		btn_material.setForeground(new Color(0, 0, 0));
+		btn_material.setText("Material");
+		btn_material.setBackground(new Color(205, 234, 251));
+		btn_material.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_Admin_Material_Stock material = new Panel_Admin_Material_Stock();
+				material.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(material);
+				material.setBorder(null);
+				((BasicInternalFrameUI) material.getUI()).setNorthPane(null);
+				material.setLocation(0, 0);
+				material.show();
+				material.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+				contentPane.requestFocus();
+				
+				
+			}
+		});
+		btn_material.setBounds(25, 273, 164, 23);
+		panel.add(btn_material);
 		btn_GestionMedica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_admin_gestionMedica_Inicio gestion_medica = new Panel_admin_gestionMedica_Inicio();
@@ -354,7 +394,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 				gestion_medica.setLocation(0, 0);
 				gestion_medica.show();
 				gestion_medica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
+				contentPane.requestFocus();
 			}
 		});
 
@@ -383,6 +423,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 			
 			try {
 				abrirPanelCrearPaciente(desktopPane);
+				
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
